@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>商品搜尋</title>
+        <title>詳細商品搜尋</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -24,32 +24,38 @@
 						<nav id="nav">
 							<ul>
 								<li class="special">
-									<a href="#menu" class="menuToggle"><span>商品清單</span></a>
+									<a href="#menu" class="menuToggle"><span>篩選條件</span></a>
 									<div id="menu">
                                             <ul>
+                                            <li><a href="search.html">回商品總覽</a></li>
                                             <li>
                                                 <select onChange="location = this.options[this.selectedIndex].value;">
-                                                    <option selected value="#">電腦類</option>
-                                                    <option value="searchlist.html">筆記型電腦</option>
-                                                    <option value="">筆記型電腦專用配件</option>
-                                                    <option value="">桌上型電腦</option>
-                                                    <option value="">電腦周邊(設備、耗材)</option>
-                                                    <option value="">網路設備</option>
-                                                    <option value="">電腦軟體</option>
-                                                    <option value=""></option>
+                                                    <option selected value="#">----</option>
+                                                    <option value="">新品</option>
+                                                    <option value="">二手</option>
                                                 </select>
                                             </li>
                                             <li>
                                                 <select onChange="location = this.options[this.selectedIndex].value;">
-                                                    <option selected value="#">手機類</option>
-                                                    <option value="">手機空機</option>
-                                                    <option value="">手機門號</option>
-                                                    <option value="">行動電源</option>
-                                                    <option value="">手機配件</option>
-                                                    <option value="">電話卡</option>
+                                                    <option selected value="#">品牌</option>
+                                                    <option value="">華碩</option>
+                                                    <option value="">微星</option>
+                                                    <option value="">宏碁</option>
+                                                    <option value="">聯想</option>
+                                                    <option value="">蘋果</option>
                                                 </select>
                                             </li>
                                             <li>
+                                                <select onChange="location = this.options[this.selectedIndex].value;">
+                                                    <option selected value="#">預算</option>
+                                                    <option value="">10000以下</option>
+                                                    <option value="">10000~20000</option>
+                                                    <option value="">20000~30000</option>
+                                                    <option value="">30000~40000</option>
+                                                    <option value="">40000以上</option>
+                                                </select>
+                                            </li>
+                                          <!--  <li>
                                                 <select onChange="location = this.options[this.selectedIndex].value;">
                                                     <option selected value="#">家電類</option>
                                                     <option value="">電視</option>
@@ -63,28 +69,8 @@
                                                     <option value="">智慧型家電</option>
                                                 </select>
                                             </li>
-                                            <li>
-                                                <select onChange="location = this.options[this.selectedIndex].value;">
-                                                    <option selected value="#">影音周邊</option>
-                                                    <option value="">影片播放機</option>
-                                                    <option value="">耳機</option>
-                                                    <option value="">音響</option>
-                                                </select>
-                                            </li>
-                                            <li>
-                                                <select onChange="location = this.options[this.selectedIndex].value;">
-                                                    <option selected value="#">飾品類</option>
-                                                    <option value="">精品包包</option>
-                                                    <option value="">絲巾、圍巾</option>
-                                                    <option value="">皮帶</option>
-                                                </select>
-                                            </li>
-                                            <!--<li>
-                                                <select onChange="location = this.options[this.selectedIndex].value;">
-                                                    <option selected value="#">請選擇</option>
-                                                    <option value=""></option>
-                                                </select>
-                                            </li>
+                                            
+                                           
                                             <li>
                                                 <select onChange="location = this.options[this.selectedIndex].value;">
                                                     <option selected value="#">請選擇</option>
@@ -111,14 +97,31 @@
 						<header>
 							<h2>永續經營</h2>
 							<p>recycle let the earth breath</p>
+                            
 						</header>
+                        
 						<section class="wrapper style5">
 							<div class="inner">
-                                
+                                <!--test
+                                <ul id="menu1">
+                                    <li><a href="#">Home</a></li>
+                                    <li>
+                                        <a href="#">Categories</a>
+                                        <ul>
+                                            <li><a href="#">CSS</a></li>
+                                            <li><a href="#">Graphic design</a></li>
+                                            <li><a href="#">Development tools</a></li>
+                                            <li><a href="#">Web design</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Work</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                                until here-->
 							</div>
 						</section>
 					</article>
-
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="icons">
