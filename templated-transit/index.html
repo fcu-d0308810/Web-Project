@@ -21,6 +21,34 @@
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-xlarge.css" />
 		</noscript>
+        <script>
+			$(document).ready(function(){
+				//var h3originColor = $("section.box h3").css("color");
+				//var poriginColor = $("section.box p").css("color");
+				//var word = $("*:not(.icon)");
+				var c = $(".box").css("background-color");
+    			$(".box").mouseenter(function(){	
+    				//$(this).not($(this).children("*")).fadeTo(0, 0.7);
+					$(this).css("background-color", "#E0E0E0");
+					
+				});
+				$(".box").mouseleave(function(){
+					$(this).css("background-color", c);
+    				//$(this).fadeTo(0, 1);
+					//var childp = $(this).children("p");
+					//var childh3 = $(this).children("h3");
+					//childp.css("color", poriginColor);
+					//childh3.css("color", h3originColor);
+				});
+			});
+			
+		</script>
+        
+        <style>
+			.box {
+				background-color: #B8B8B8;
+			}
+		</style>
 	</head>
 	<body class="landing">
 
@@ -58,7 +86,7 @@
 					<div class="row 150%">
 						<div class="4u 12u$(medium)">
                         	<a href="login.html">
-								<section class="box">
+								<section class="box" style="background-color: #D1D1D1">
 									<i class="icon big rounded color1 fa-cloud"></i>
 									<h3>會員</h3>
 									<p>有註冊請從此登入</p>
@@ -67,7 +95,7 @@
 						</div>
 						<div class="4u 12u$(medium)">
                             <a href="search.html">
-                                <section class="box">
+                                <section class="box" style="background-color: #D1D1D1">
                                     <i class="icon big rounded color9 fa-desktop"></i>
                                     <h3>訪客</h3>
                                     <p>可瀏覽販賣物件</p>
@@ -76,7 +104,7 @@
 						</div>
 						<div class="4u$ 12u$(medium)">
                         	<a href="demo.html">
-                                <section class="box">
+                                <section class="box" style="background-color: #D1D1D1">
                                     <i class="icon big rounded color6 fa-rocket"></i>
                                     <h3>第三方廠商</h3>
                                     <p>合作廠商請從此登入</p>
