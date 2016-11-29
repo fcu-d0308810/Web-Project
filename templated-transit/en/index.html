@@ -8,9 +8,6 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>666 Sales</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 		<script src="js/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
@@ -21,12 +18,32 @@
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-xlarge.css" />
 		</noscript>
+        <script>
+			$(document).ready(function(){
+				var c = $(".box").css("background-color");
+    			$(".box").mouseenter(function(){	
+    				//$(this).not($(this).children("*")).fadeTo(0, 0.7);
+					//use fadeTo, animate here would cause all elements fade
+					$(this).css("background-color", "#EAEAEA");
+					
+				});
+				$(".box").mouseleave(function(){
+					$(this).css("background-color", c);
+				});
+			});
+			
+		</script>
+        <style>
+			.box{
+				background-color: white;
+			}
+		</style>
 	</head>
 	<body class="landing">
 
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="../index.html">Exchange</a></h1>
+				<h1><a href="index.html">Exchange</a></h1>
 				<nav id="nav">
 					<ul>
 						<li><a href="../index.html">中文</a></li>
@@ -89,32 +106,32 @@
 					<section class="profiles">
 						<div class="row">
                             <section class="3u 6u(medium) 12u$(xsmall) profile">
-                            <img src="images/profile_placeholder.gif" alt="" />
-                            	<a href="#">
+                             <a href="#">
+                                    <img src="images/profile_placeholder.gif" alt="" />
                                     <h4>白貓宅急便</h4>
                                 </a>
                                 <p>24小時全年無休運送</p>
                             </section>
 
                             <section class="3u 6u$(medium) 12u$(xsmall) profile">
-                                <img src="images/profile_placeholder.gif" alt="" />
-                                <a href="#">
+                                 <a href="#">
+                                    <img src="images/profile_placeholder.gif" alt="" />
                                     <h4>FatEx</h4>
                                 </a>
                                 <p>國際貨運不卡關</p>
                             </section>
 
                             <section class="3u 6u(medium) 12u$(xsmall) profile">
-                                <img src="images/profile_placeholder.gif" alt="" />
-                                <a href="#">
+                                 <a href="#">
+                                    <img src="images/profile_placeholder.gif" alt="" />
                                     <h4>Zero Twenty Four</h4>
                                 </a>
                                 <p>24小時店對店運送</p>
                             </section>
 
                             <section class="3u$ 6u$(medium) 12u$(xsmall) profile">
-                                <img src="images/profile_placeholder.gif" alt="" />
-                                <a href="#">
+                                 <a href="#">
+                                    <img src="images/profile_placeholder.gif" alt="" />
                                     <h4>內政部警政署</h4>	
                                 </a>
                                 <p>詐騙防治與諮詢</p>
