@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--
+	Transit by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>購物車</title>
+    <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/skel-layers.min.js"></script>
+    <script src="js/init.js"></script>
+    <noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+    <style>
+        .cart-wrap {
+            font-size: 20px;
+        }
+
+        .wrapper_1 {
+            padding: 2em 0em 4em;
+        }
+
+        .cart_head {
+            font-size: 30px;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+
+        .input-group {
+            display: table;
+        }
+
+        .input {
+            padding: 6px 12px;
+            font-size: 14px;
+            background-color: #eee;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <h1><a href="index.html">666拍賣網</a></h1>
+        <nav id="nav">
+            <ul>
+                <li><a href="en/index.html">English</a></li>
+                <li><a href="search.html">訪客進入</a></li>
+                <li><a href="login.html">會員登入</a></li>
+                <li><a href="signup.html" class="button special">註冊</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <section id="main" class="wrapper_1">
+        <div class="container">
+            <header class="major">
+                <h3 class="cart_head">購物車</h3>
+                <p align="left">
+                    <img src="cart_img/step1.gif" width="500" height="60">
+                </p>
+            </header>
+            <div class="cart-wrap">
+                <table id="cartTable" class="cart table table-condensed">
+                    <thead>
+                        <tr>
+                            <th><label>商品</label></th>
+                            <th><label>商品資訊</label></th>
+                            <th><label>單價</label></th>
+                            <th><label>数量</label></th>
+                            <th><label>小計</label></th>
+                            <th><label>刪除</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="goods">
+                                <img src="production_computer/pic/ASUS_ZenPad_Theater.jpg" style="width:110px">
+                            </td>
+                            <td><span>ASUS_ZenPad_Theater</span></td>
+                            <td class="selling-price number small-bold-red text-right " style="padding-top: 1.1rem; " data-bind="76.55 ">76.55</td>
+                            <td style="width:130px;">
+                                <div class="input-group">
+                                    <span class="input min">-</span>
+                                    <input type="text " class="input_sum " style="width:40px;" value=" 2 " />
+                                    <span class="input plus ">+</span>
+                                </div>
+                            </td>
+                            <td class=""></td>
+                            <td class="action ">
+                                <img src="cart_img/trash.png" width="30" height="30">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <section class="links">
+                <div class="row">
+                    <section class="3u 6u(medium) 12u$(small)">
+                        <h3>關於666拍賣網的二三事</h3>
+                        <ul class="unstyled">
+                            <li>我們是幾個熱血的大學生</li>
+
+
+                        </ul>
+                    </section>
+                    <section class="3u 6u$(medium) 12u$(small)">
+                        <h3>客服</h3>
+                        <ul class="unstyled">
+                            <li>(一~五)8:00-16:00</li>
+                            <li>(六、日)放假</li>
+                            <li>信箱:1234567@gmail.com</li>
+
+
+                        </ul>
+                    </section>
+                    <section class="3u 6u(medium) 12u$(small)">
+                        <h3>社群</h3>
+                        <ul class="unstyled">
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Youtube</a></li>
+                            <li><a href="#">Instagram</a></li>
+
+                        </ul>
+                    </section>
+                    <section class="3u$ 6u$(medium) 12u$(small)">
+                        <h3>新聞與資訊</h3>
+                        <ul class="unstyled">
+                            <li><a href="#">新聞中心</a></li>
+                            <li><a href="#">about 666</a></li>
+
+                        </ul>
+                    </section>
+                </div>
+            </section>
+            <div class="row">
+                <div class="8u 12u$(medium)">
+                    <ul class="copyright">
+                        <li>&copy; Untitled. All rights reserved.</li>
+                        <li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+                        <li>Images: <a href="http://unsplash.com">Unsplash</a></li>
+                    </ul>
+                </div>
+                <div class="4u$ 12u$(medium)">
+                    <ul class="icons">
+                        <li>
+                            <a class="icon rounded fa-facebook"><span class="label">Facebook</span></a>
+                        </li>
+                        <li>
+                            <a class="icon rounded fa-twitter"><span class="label">Twitter</span></a>
+                        </li>
+                        <li>
+                            <a class="icon rounded fa-google-plus"><span class="label">Google+</span></a>
+                        </li>
+                        <li>
+                            <a class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
