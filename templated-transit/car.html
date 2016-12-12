@@ -1,19 +1,70 @@
 <!DOCTYPE html>
-<!--
-	Transit by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
 <html lang="zh">
 
 <head>
     <meta charset="UTF-8">
     <title>購物車</title>
-    <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
     <script src="js/jquery.min.js"></script>
     <script src="js/skel.min.js"></script>
     <script src="js/skel-layers.min.js"></script>
     <script src="js/init.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            function getSubTotal(row) {
+                var price = parseFloat($(row).find(".price").text());
+                var qty = parseInt($(row).find(":text").val());
+                var result = price * qty;
+                $(row).find(".total").text(result.toFixed(2));
+            };
+
+            function getTotal() {
+                var qtyTotal = 0;
+                var priceTotal = 0;
+                $(cartTable).find("tr:gt(0)").each(function() {
+                    priceTotal += parseFloat($(this).find(".total").text()); //累计产品金额
+                });
+                $(".priceTotal").text(priceTotal.toFixed(2));
+            };
+            getTotal();
+
+            $(cartTable).find("tr:gt(0)").each(function() {
+                var input = $(this).find(":text");
+
+                $(input).keyup(function() {
+                    var val = parseInt($(this).val());
+                    if (isNaN(val) || (val < 1)) {
+                        $(this).val("1");
+                    }
+                    getSubTotal($(this).parent().parent()); //tr element
+                    getTotal();
+                });
+
+                //按鈕觸發事件
+                $(this).click(function() {
+                    var val = parseInt($(input).val());
+                    if (isNaN(val) || (val < 1)) {
+                        val = 1;
+                    }
+                    if ($(window.event.srcElement).hasClass("minus")) {
+                        if (val > 1) val--;
+                        input.val(val);
+                        getSubTotal(this);
+                    } else if ($(window.event.srcElement).hasClass("plus")) {
+                        if (val < 9999) val++;
+                        input.val(val);
+                        getSubTotal(this);
+                    } else if ($(window.event.srcElement).hasClass("delete")) {
+                        if (confirm("確定要刪除此商品?")) {
+                            $(this).remove();
+                        }
+                    }
+                    getTotal();
+                });
+            });
+        });
+    </script>
+
     <noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -37,7 +88,7 @@
         }
 
         .input-group {
-            display: table;
+            white-space: nowrap;
         }
 
         .input {
@@ -46,11 +97,26 @@
             background-color: #eee;
             border: 1px solid #ccc;
         }
+
+        .input_sum {
+            font-size: 13px;
+            line-height: 1.5;
+            padding: 6px 12px;
+        }
+
+        .delete {
+            background-color: transparent;
+            border-color: transparent;
+            background-image: url("cart_img/trash.png");
+            width: 30px;
+            height: 30px;
+            background-size: 30px 30px;
+            background-repeat: no-repeat;
+        }
     </style>
 </head>
 
 <body>
-
     <!-- Header -->
     <header id="header">
         <h1><a href="index.html">666拍賣網</a></h1>
@@ -91,28 +157,46 @@
                                 <img src="production_computer/pic/ASUS_ZenPad_Theater.jpg" style="width:110px">
                             </td>
                             <td><span>ASUS_ZenPad_Theater</span></td>
-                            <td class="selling-price number small-bold-red text-right " style="padding-top: 1.1rem; " data-bind="76.55 ">76.55</td>
-                            <td style="width:130px;">
+                            <td class="price" style="padding-top: 1.1rem;">76.55</td>
+                            <td style="width:135px;">
                                 <div class="input-group">
-                                    <span class="input min">-</span>
-                                    <input type="text " class="input_sum " style="width:40px;" value=" 2 " />
-                                    <span class="input plus ">+</span>
+                                    <button class="input minus" style="float:left;">-</button>
+                                    <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
+                                    <button class="input plus ">+</button>
                                 </div>
                             </td>
-                            <td class=""></td>
-                            <td class="action ">
-                                <img src="cart_img/trash.png" width="30" height="30">
+                            <td class="total" style="width:150px">76.55</td>
+                            <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
+                                <button class="delete "></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="goods">
+                                <img src="production_computer/pic/ASUS_ZenPad_Theater.jpg" style="width:110px">
+                            </td>
+                            <td><span>ASUS_ZenPad_Theater</span></td>
+                            <td class="price" style="padding-top: 1.1rem;">76.55</td>
+                            <td style="width:135px;">
+                                <div class="input-group">
+                                    <button class="input minus" style="float:left;">-</button>
+                                    <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
+                                    <button class="input plus ">+</button>
+                                </div>
+                            </td>
+                            <td class="total" style="width:150px">76.55</td>
+                            <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
+                                <button class="delete "></button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <div style="margin-left: 60rem; margin-top: 0.4rem; ">
+                    <label>總金額:<span class="priceTotal"></span></label>
+                </div>
             </div>
         </div>
 
     </section>
-
-
-
 
     <!-- Footer -->
     <footer id="footer">
@@ -187,3 +271,7 @@
 </body>
 
 </html>
+body>
+
+</html>
+tml>
