@@ -15,19 +15,33 @@
 			<link rel="stylesheet" href="css/style-xlarge.css" />
 		</noscript>
     <script type="text/javascript">
-        function check() {
-            if (reg.username.value == "") {
-                alert("未輸入姓名");
-            } else if (reg.cellphone.value == "") {
-                alert("未輸入手機號碼");
-            } else if (reg.phone.value == "") {
-                alert("未輸入市話號碼");
-            } else if (reg.address.value == "") {
-                alert("未輸入地址");
-            } else if (!reg.pay[0].checked && !reg.pay[1].checked) {
-                alert("未選擇付款方式");
-            } else reg.submit();
-        }
+        $(document).ready(function() {
+            $("#submit").click(function() {
+                if (reg.username.value == "") {
+                    alert("未輸入姓名");
+                    return false;
+                } else if (reg.cellphone.value == "") {
+                    alert("未輸入手機號碼");
+                    return false;
+                } else if (reg.phone.value == "") {
+                    alert("未輸入市話號碼");
+                    return false;
+                } else if (reg.email.value == "") {
+                    alert("未輸入地址");
+                    return false;
+                } else if (reg.address.value == "") {
+                    alert("未輸入地址");
+                    return false;
+                } else if (!reg.pay[0].checked && !reg.pay[1].checked) {
+                    alert("未選擇付款方式");
+                    return false;
+                } else if (!reg.transport[0].checked && !reg.transport[1].checked) {
+                    alert("未選擇運送方式");
+                    return false;
+                } else reg.submit;
+
+            })
+        })
     </script>
     <script>
         $(document).ready(function() {
@@ -187,7 +201,7 @@
                 </p>
             </header>
             <div class="cart-wrap">
-                <form id="message_form" name="reg" method="POST" action="http://localhost:80/templated-transit/select_submit.php ">
+                <form id="message_form" name="reg" method="POST" action="http://localhost:80/templated-transit/select_submit.php">
                     <table id="cartTable" class="cart table table-condensed">
                         <thead>
                             <tr>
@@ -270,7 +284,7 @@
                         </tbody>
                     </table>
                     <div style="margin-left: 64rem; margin-top: 0.4rem; ">
-                        <input id="submit" type="submit" class="css_btn_class" value="下一步，送出訂單" onclick="check();" />
+                        <input id="submit" type="submit" class="css_btn_class" value="下一步，送出訂單" />
                     </div>
                 </form>
 
@@ -349,6 +363,11 @@
             </div>
         </div>
     </footer>
+
+</body>
+
+</html>
+
 
 </body>
 
