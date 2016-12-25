@@ -8,8 +8,21 @@
     <script src="js/skel.min.js"></script>
     <script src="js/skel-layers.min.js"></script>
     <script src="js/init.js"></script>
+    <script src="js/hover.js"></script>
 
     <script type="text/javascript">
+        $(document).ready(function() {
+            $("#goods").hoverpulse({
+                size: 75, // 圖片縮放的大小
+                speed: 100 // 圖片變換大小的速度
+            });
+            $("#good2").hoverpulse({
+                size: 75, // 圖片縮放的大小
+                speed: 100 // 圖片變換大小的速度
+            });
+
+        });
+
         $(document).ready(function() {
             function getSubTotal(row) {
                 var price = parseFloat($(row).find(".price").text());
@@ -160,63 +173,63 @@
                 </p>
             </header>
             <div class="cart-wrap">
-                <form id="message_form" method="POST" action="confirmation.html ">
+                <table id="cartTable" class="cart table table-condensed">
+                    <thead>
+                        <tr>
+                            <th><label>商品</label></th>
+                            <th><label>商品資訊</label></th>
+                            <th><label>單價</label></th>
+                            <th><label>数量</label></th>
+                            <th><label>小計</label></th>
+                            <th><label>刪除</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="goods" width="110" height="110">
+                                <img src="production_computer/pic/ASUS_ZenPad_Theater.jpg" id="goods" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                            </td>
+                            <td><span>ASUS_ZenPad_Theater</span></td>
+                            <td class="price" style="padding-top: 1.1rem;">76.55</td>
+                            <td style="width:135px;">
+                                <div class="input-group">
+                                    <button class="input minus" style="float:left;">-</button>
+                                    <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
+                                    <button class="input plus ">+</button>
+                                </div>
+                            </td>
+                            <td class="total" style="width:150px">76.55</td>
+                            <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
+                                <button class="delete "></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="goods" width="110" height="110">
+                                <img src="production_computer/pic/ASUS_X554SJ.jpg" id="good2" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                            </td>
+                            <td><span>ASUS_X554SJ</span></td>
+                            <td class="price" style="padding-top: 1.1rem;">76.55</td>
+                            <td style="width:135px;">
+                                <div class="input-group">
+                                    <button class="input minus" style="float:left;">-</button>
+                                    <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
+                                    <button class="input plus ">+</button>
+                                </div>
+                            </td>
+                            <td class="total" style="width:150px">76.55</td>
+                            <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
+                                <button class="delete"></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-left: 65rem; margin-top: 0.4rem; ">
+                    <label>總金額:<span class="priceTotal"></span></label>
+                </div>
+                <form id="message_form" action="confirmation.html ">
 
-                    <table id="cartTable" class="cart table table-condensed">
-                        <thead>
-                            <tr>
-                                <th><label>商品</label></th>
-                                <th><label>商品資訊</label></th>
-                                <th><label>單價</label></th>
-                                <th><label>数量</label></th>
-                                <th><label>小計</label></th>
-                                <th><label>刪除</label></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="goods">
-                                    <img src="production_computer/pic/ASUS_ZenPad_Theater.jpg" style="width:110px">
-                                </td>
-                                <td><span>ASUS_ZenPad_Theater</span></td>
-                                <td class="price" style="padding-top: 1.1rem;">76.55</td>
-                                <td style="width:135px;">
-                                    <div class="input-group">
-                                        <button class="input minus" style="float:left;">-</button>
-                                        <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
-                                        <button class="input plus ">+</button>
-                                    </div>
-                                </td>
-                                <td class="total" style="width:150px">76.55</td>
-                                <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
-                                    <button class="delete "></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="goods">
-                                    <img src="production_computer/pic/ASUS_ZenPad_Theater.jpg" style="width:110px">
-                                </td>
-                                <td><span>ASUS_ZenPad_Theater</span></td>
-                                <td class="price" style="padding-top: 1.1rem;">76.55</td>
-                                <td style="width:135px;">
-                                    <div class="input-group">
-                                        <button class="input minus" style="float:left;">-</button>
-                                        <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
-                                        <button class="input plus ">+</button>
-                                    </div>
-                                </td>
-                                <td class="total" style="width:150px">76.55</td>
-                                <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
-                                    <button class="delete "></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div style="margin-left: 65rem; margin-top: 0.4rem; ">
-                        <label>總金額:<span class="priceTotal"></span></label>
-                    </div>
                     <div style="margin-left: 64rem; margin-top: 0.4rem; ">
-                        <input action="confirmation.html" type="submit" class="css_btn_class" value="下一步，填寫訂單" />
+                        <input type="submit" id="submit" class="css_btn_class" value="下一步，填寫訂單" />
                     </div>
                 </form>
             </div>
