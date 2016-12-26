@@ -8,8 +8,33 @@
     <script src="js/skel.min.js"></script>
     <script src="js/skel-layers.min.js"></script>
     <script src="js/init.js"></script>
+    <script src="js/hover.js"></script>
+    <script src="jquery.fly.min.js"></script>
+
+
 
     <script type="text/javascript">
+        $(document).ready(function() {
+            $("#goods").hoverpulse({
+                size: 100, // 圖片縮放的大小
+                speed: 100 // 圖片變換大小的速度
+            });
+            $("#good2").hoverpulse({
+                size: 100, // 圖片縮放的大小
+                speed: 100 // 圖片變換大小的速度
+            });
+            $("#good3").hoverpulse({
+                size: 100, // 圖片縮放的大小
+                speed: 100 // 圖片變換大小的速度
+            });
+            $("#good4").hoverpulse({
+                size: 100, // 圖片縮放的大小
+                speed: 100 // 圖片變換大小的速度
+            });
+
+
+        });
+
         $(document).ready(function() {
             function getSubTotal(row) {
                 var price = parseFloat($(row).find(".price").text());
@@ -56,7 +81,57 @@
                         getSubTotal(this);
                     } else if ($(window.event.srcElement).hasClass("delete")) {
                         if (confirm("確定要刪除此商品?")) {
+                            // $(function() {
+                            //     var offset = $("#main").offset();
+                            //     $(".delete").click(function(event) {
+                            //         var de = $(this);
+                            //         var img = de.parent().parent().find('img').attr('src');
+                            //         var flyer = $('<img class="u-flyer" src="' + img + '">');
+                            //         flyer.fly({
+                            //             start: {
+                            //                 left: event.pageX, //开始位置（必填）#fly元素会被设置成position: fixed
+                            //                 top: event.pageY //开始位置（必填）
+                            //             },
+                            //             end: {
+                            //                 left: offset.left + 10, //结束位置（必填）
+                            //                 top: offset.top + 10, //结束位置（必填）
+                            //                 width: 0, //结束时宽度
+                            //                 height: 0 //结束时高度
+                            //             },
+                            //             onEnd: function() { //结束回调
+                            //                 $("#msg").show().animate({
+                            //                     width: '250px'
+                            //                 }, 200).fadeOut(1000); //提示信息
+                            //                 addcar.css("cursor", "default").removeClass('orange').unbind('click');
+                            //                 this.destory(); //移除dom
+                            //             }
+                            //         });
+                            //     });
+                            // });
                             $(this).remove();
+                            var offset = $("#main").offset();
+                            var de = $(".delete");
+                            var img = de.parent().parent().find('img').attr('src');
+                            var flyer = $('<img class="u-flyer" src="' + img + '">');
+                            flyer.fly({
+                                start: {
+                                    left: event.pageX, //开始位置（必填）#fly元素会被设置成position: fixed
+                                    top: event.pageY //开始位置（必填）
+                                },
+                                end: {
+                                    left: offset.left + 10, //结束位置（必填）
+                                    top: offset.top + 10, //结束位置（必填）
+                                    width: 0, //结束时宽度
+                                    height: 0 //结束时高度
+                                },
+                                onEnd: function() { //结束回调
+                                    $("#msg").show().animate({
+                                        width: '250px'
+                                    }, 200).fadeOut(1000); //提示信息
+                                    addcar.css("cursor", "default").removeClass('orange').unbind('click');
+                                    this.destory(); //移除dom
+                                }
+                            });
                         }
                     }
                     getTotal();
@@ -114,6 +189,10 @@
             background-repeat: no-repeat;
         }
 
+        thead {
+            background-color: rgb(208, 208, 208);
+        }
+
         input[type=submit] {
             height: 45px;
             font-size: 16px;
@@ -132,6 +211,30 @@
             background-color: #ededed;
             color: #777777 !important;
             display: inline-block;
+        }
+
+        .u-flyer {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            position: fixed;
+            z-index: 9999;
+        }
+
+        #msg {
+            position: fixed;
+            top: 300px;
+            right: 35px;
+            z-index: 10000;
+            width: 1px;
+            height: 52px;
+            line-height: 52px;
+            font-size: 20px;
+            text-align: center;
+            color: #fff;
+            background: #360;
+            display: none
         }
     </style>
 </head>
@@ -160,63 +263,99 @@
                 </p>
             </header>
             <div class="cart-wrap">
-                <form id="message_form" method="POST" action="confirmation.html ">
-
-                    <table id="cartTable" class="cart table table-condensed">
-                        <thead>
-                            <tr>
-                                <th><label>商品</label></th>
-                                <th><label>商品資訊</label></th>
-                                <th><label>單價</label></th>
-                                <th><label>数量</label></th>
-                                <th><label>小計</label></th>
-                                <th><label>刪除</label></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="goods">
-                                    <img src="production_computer/pic/ASUS_ZenPad_Theater.jpg" style="width:110px">
-                                </td>
-                                <td><span>ASUS_ZenPad_Theater</span></td>
-                                <td class="price" style="padding-top: 1.1rem;">76.55</td>
-                                <td style="width:135px;">
-                                    <div class="input-group">
-                                        <button class="input minus" style="float:left;">-</button>
-                                        <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
-                                        <button class="input plus ">+</button>
-                                    </div>
-                                </td>
-                                <td class="total" style="width:150px">76.55</td>
-                                <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
-                                    <button class="delete "></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="goods">
-                                    <img src="production_computer/pic/ASUS_ZenPad_Theater.jpg" style="width:110px">
-                                </td>
-                                <td><span>ASUS_ZenPad_Theater</span></td>
-                                <td class="price" style="padding-top: 1.1rem;">76.55</td>
-                                <td style="width:135px;">
-                                    <div class="input-group">
-                                        <button class="input minus" style="float:left;">-</button>
-                                        <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
-                                        <button class="input plus ">+</button>
-                                    </div>
-                                </td>
-                                <td class="total" style="width:150px">76.55</td>
-                                <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
-                                    <button class="delete "></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div style="margin-left: 65rem; margin-top: 0.4rem; ">
-                        <label>總金額:<span class="priceTotal"></span></label>
-                    </div>
+                <table id="cartTable" class="cart table table-condensed">
+                    <thead>
+                        <tr>
+                            <th><label style="margin:1em 0 0.4em 0;font-size: 18px;">商品</label></th>
+                            <th><label style="margin:1em 0 0.4em 0;font-size: 18px;">商品資訊</label></th>
+                            <th><label style="margin:1em 0 0.4em 0;font-size: 18px;">單價</label></th>
+                            <th><label style="margin:1em 0 0.4em 0;font-size: 18px;">数量</label></th>
+                            <th><label style="margin:1em 0 0.4em 0;font-size: 18px;">小計</label></th>
+                            <th><label style="margin:1em 0 0.4em 0;font-size: 18px;">刪除</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="goods" width="110" height="110">
+                                <img src="production_computer/pic/ASUS_ZenPad_Theater.jpg" id="goods" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                            </td>
+                            <td><span>ASUS_ZenPad_Theater</span></td>
+                            <td class="price" style="padding-top: 1.1rem;">32500</td>
+                            <td style="width:135px;">
+                                <div class="input-group">
+                                    <button class="input minus" style="float:left;">-</button>
+                                    <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
+                                    <button class="input plus ">+</button>
+                                </div>
+                            </td>
+                            <td class="total" style="width:150px">32500</td>
+                            <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
+                                <button class="delete "></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="goods" width="110" height="110">
+                                <img src="production_computer/pic/ASUS_X554SJ.jpg" id="good2" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                            </td>
+                            <td><span>ASUS_X554SJ</span></td>
+                            <td class="price" style="padding-top: 1.1rem;">26600</td>
+                            <td style="width:135px;">
+                                <div class="input-group">
+                                    <button class="input minus" style="float:left;">-</button>
+                                    <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
+                                    <button class="input plus ">+</button>
+                                </div>
+                            </td>
+                            <td class="total" style="width:150px">26600</td>
+                            <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
+                                <button class="delete"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="goods" width="110" height="110">
+                                <img src="production_computer/pic/ACER_GT_810.jpg" id="good3" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                            </td>
+                            <td><span>ACER_GT_810</span></td>
+                            <td class="price" style="padding-top: 1.1rem;">31600</td>
+                            <td style="width:135px;">
+                                <div class="input-group">
+                                    <button class="input minus" style="float:left;">-</button>
+                                    <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
+                                    <button class="input plus ">+</button>
+                                </div>
+                            </td>
+                            <td class="total" style="width:150px">31600</td>
+                            <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
+                                <button class="delete"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="goods" width="110" height="110">
+                                <img src="production_computer/pic/ASUS_ZenPad_3s.jpg" id="good4" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                            </td>
+                            <td><span>ASUS_ZenPad_3s</span></td>
+                            <td class="price" style="padding-top: 1.1rem;">44400</td>
+                            <td style="width:135px;">
+                                <div class="input-group">
+                                    <button class="input minus" style="float:left;">-</button>
+                                    <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
+                                    <button class="input plus ">+</button>
+                                </div>
+                            </td>
+                            <td class="total" style="width:150px">31600</td>
+                            <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
+                                <button class="delete"></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-left: 65rem; margin-top: 0.4rem; ">
+                    <label>總金額:<span class="priceTotal"></span></label>
+                </div>
+                <form id="message_form" action="confirmation.html ">
                     <div style="margin-left: 64rem; margin-top: 0.4rem; ">
-                        <input action="confirmation.html" type="submit" class="css_btn_class" value="下一步，填寫訂單" />
+                        <input type="submit" id="submit" class="css_btn_class" value="下一步，填寫訂單" />
+                        <div id="msg">已成功刪除商品！</div>
                     </div>
                 </form>
             </div>

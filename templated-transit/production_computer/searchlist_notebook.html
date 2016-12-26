@@ -13,17 +13,24 @@
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script>
-
+			$(document).ready(function(){
+				$("div.polaroid").click(function(){
+					$("div.introduction").show("slow");
+					$(".ASUS_X554SJ").hide("slow");
+				});
+			});
 		</script>
 		<style>
 			#search_pad{
 				margin-left: 100px;
 				margin-right: 50px;
 			}
-			#list{
-				background-color: lightblue;
-				padding: 30px;
+			div.introduction{
+				width: 250px;
+				height: 365px;
+				display: none;
 			}
 			div.polaroid {
   			width: 250px;
@@ -104,12 +111,15 @@
 
 						<section class="wrapper style5">
 							<div id="search_pad">
-								<div style="column-count: 4; column-gap: 40px;">
+								<div style="column-count: 4; column-gap: 40px; height: 400px;">
 									<div class="polaroid">
-  									<img src="pic/ASUS_X554SJ.jpg" alt="404 error" style="width:100%">
-  									<div class="container">
-    								<p>ASUS X554SJ四核2G獨顯筆電</p>
+
+  									<img src="pic/ASUS_X554SJ.jpg" alt="404 error" style="width:100%" class="ASUS_X554SJ">
+									<div class="container ASUS_X554SJ" >
+    								<a href="../index.html"><p>ASUS X554SJ四核2G獨顯筆電</p></a>
   									</div>
+										<div class="introduction">hello</div>
+									</a>
 									</div>
 									<div class="polaroid">
   									<img src="pic/ASUS_K556UQ.jpg" alt="404 error" style="width:100%">
