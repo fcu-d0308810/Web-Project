@@ -108,10 +108,9 @@
                             //         });
                             //     });
                             // });
-                            $(this).remove();
                             var offset = $("#main").offset();
-                            var de = $(".delete");
-                            var img = de.parent().parent().find('img').attr('src');
+                            var de = $(this);
+                            var img = de.find('img').attr('src');
                             var flyer = $('<img class="u-flyer" src="' + img + '">');
                             flyer.fly({
                                 start: {
@@ -132,6 +131,8 @@
                                     this.destory(); //移除dom
                                 }
                             });
+                            $(this).remove();
+
                         }
                     }
                     getTotal();
