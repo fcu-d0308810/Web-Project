@@ -14,7 +14,7 @@
     <script src="js/skel.min.js"></script>
     <script src="js/skel-layers.min.js"></script>
     <script src="js/init.js"></script>
-    <script src="js/jquery.hoverpulse.js"></script>
+    <script src="js/hover.js"></script>
 
     <noscript>
 			<link rel="stylesheet" href="css/skel.css" />
@@ -32,6 +32,41 @@
           size: 150,  // 圖片縮放的大小
           speed: 400 // 圖片變換大小的速度
       });
+      $("#good_3").hoverpulse({
+          size: 150,  // 圖片縮放的大小
+          speed: 400 // 圖片變換大小的速度
+      });
+      $("#good_4").hoverpulse({
+          size: 150,  // 圖片縮放的大小
+          speed: 400 // 圖片變換大小的速度
+      });
+    });
+    $(function() {
+        var offset = $(".cart").offset();
+        $(".go").click(function(event) {
+            var de = $(this);
+            var img = de.parent().parent().find('img').attr('src');
+            var flyer = $('<img class="u-flyer" src="' + img + '">');
+            flyer.fly({
+                start: {
+                    left: event.pageX, //开始位置（必填）#fly元素会被设置成position: fixed
+                    top: event.pageY //开始位置（必填）
+                },
+                end: {
+                    left: offset.left + 10, //结束位置（必填）
+                    top: offset.top + 10, //结束位置（必填）
+                    width: 0, //结束时宽度
+                    height: 0 //结束时高度
+                },
+                onEnd: function() { //结束回调
+                    $("#msg").show().animate({
+                        width: '250px'
+                    }, 200).fadeOut(1000); //提示信息
+                    addcar.css("cursor", "default").removeClass('orange').unbind('click');
+                    this.destory(); //移除dom
+                }
+            });
+        });
     });
     </script>
 
@@ -59,9 +94,7 @@
         		table td {
         			padding: 0.75em 0.75em;
               vertical-align: middle;
-              width: 220;
-              height: 220;
-              background-size:contain; ;
+
         		}
 
         		table th {
@@ -71,6 +104,61 @@
               padding: 0 0.75em 0.75em 0.75em;
         			text-align: center;
         		}
+            .u-flyer {
+                display: block;
+                width: 100px;
+                height: 100px;
+                border-radius: 50px;
+                position: fixed;
+                z-index: 9999;
+            }
+
+            .m-sidebar {
+                position: fixed;
+                top: 0;
+                right: 0;
+                background: #969696;
+                z-index: 2000;
+                width: 35px;
+                height: 100%;
+                font-size: 12px;
+                color: #fff;
+            }
+
+            .cart {
+                color: #fff;
+                text-align: center;
+                line-height: 20px;
+                padding: 200px 0 0 0px;
+            }
+
+            .cart span {
+                display: block;
+                width: 20px;
+                margin: 0 auto;
+            }
+
+            .cart i {
+                width: 35px;
+                height: 35px;
+                display: block;
+                background: url(car.png) no-repeat;
+            }
+
+            #msg {
+                position: fixed;
+                top: 300px;
+                right: 35px;
+                z-index: 10000;
+                width: 1px;
+                height: 52px;
+                line-height: 52px;
+                font-size: 20px;
+                text-align: center;
+                color: #fff;
+                background: #360;
+                display: none
+            }
     </style>
 </head>
 
@@ -128,7 +216,7 @@
                     <td>ASUS_X554SJ</td>
                     <td>17,000</td>
                     <td>10</td>
-                    <td><a href="car.html" class="button small">加入購物車</a></td>
+                    <td><input class="go button small" value="加入購物車"> </input></td>
                   </tr>
                 </tbody>
 
@@ -140,15 +228,43 @@
                     <td>ACER_ES1-632G-C6A0</td>
                     <td>18,000</td>
                     <td>5</td>
-                    <td><a href="car.html" class="button small">加入購物車</a></td>
+                    <td><input class="go button small" value="加入購物車"> </input></td>
                   </tr>
                 </tbody>
 
+                <tbody>                <!--商品tuple-->
+                  <tr>
+                    <td  width="110" height="110">
+                      <img src="production_computer/pic/ASUS_K556UQ.jpg" id="good_3" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                    </td>
+                    <td>ASUS_K556UQ</td>
+                    <td>19,000</td>
+                    <td>7</td>
+                    <td><input class="go button small" value="加入購物車"> </input></td>
+                  </tr>
+                </tbody>
+                <tbody>                <!--商品tuple-->
+                  <tr>
+                    <td  width="110" height="110">
+                      <img src="production_computer/pic/ASUS_ZenPad_3s.jpg" id="good_4" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                    </td>
+                    <td>ASUS_ZenPad_3s</td>
+                    <td>20,000</td>
+                    <td>9</td>
+                    <td><input class="go button small" value="加入購物車"> </input></td>
+                  </tr>
+                </tbody>
             </section>
           <!-- </div> -->
         </table>
       </section>
-
+      <div class="m-sidebar">
+          <div class="cart">
+              <i id="end"></i>
+              <span id="cc"><a href="car.html">購物車</span>
+          </div>
+      </div>
+      <div id="msg">已成功加入購物車！</div>
    </div>
     <!-- Footer -->
       <footer id="footer">
