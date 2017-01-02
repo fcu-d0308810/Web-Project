@@ -152,7 +152,7 @@
                             </tr>
                             <tr>
                                 <td class="first-td">總金額：</td>
-                                <td><div class="row-align">$66800</div></td>
+                                <td><div class="row-align">$156600</div></td>
                             </tr>
 
                         </tbody>
