@@ -8,6 +8,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
     <title>賣家資訊</title>
     <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
     <script src="js/jquery.min.js"></script>
@@ -15,12 +17,12 @@
     <script src="js/skel-layers.min.js"></script>
     <script src="js/init.js"></script>
     <script src="js/hover.js"></script>
-
     <noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-xlarge.css" />
       <link href="css/scrolling-nav.css" rel="stylesheet">
+
 
 		</noscript>
 
@@ -180,6 +182,46 @@
             color: #777777 !important;
             display: inline-block;
         }
+
+        @media (max-width: 736px) {
+            .table-rwd {
+                min-width: 100%;
+            }
+            /*針對tr去做隱藏*/
+            tr.tr-only-hide {
+                display: none !important;
+            }
+            /*讓tr變成區塊主要讓他有個區塊*/
+            .table-rwd tr {
+                display: block;
+                border: 1px solid #ddd;
+                margin-top: 5px;
+            }
+            .table-rwd td {
+                text-align: left;
+                font-size: 16px;
+                overflow: hidden;
+                width: 100%;
+                display: block;
+                vertical-align: middle;
+            }
+            .table-rwd td:before {
+                /*最重要的就是這串*/
+                content: attr(data-th) " : ";
+                /*最重要的就是這串*/
+                display: inline-block;
+                text-transform: uppercase;
+                font-weight: bold;
+                margin-right: 10px;
+                color: #6a6a6a;
+            }
+            /*當RWD縮小的時候.table-bordered 會有兩條線，所以針對.table-bordered去做修正*/
+            .table-rwd.table-bordered td,
+            .table-rwd.table-bordered th,
+            .table-rwd.table-bordered {
+                border: 0;
+            }
+        }
     </style>
 </head>
 
@@ -202,7 +244,6 @@
 
         <div class="container">
             <header class="major">
-
                 <div class="box align-center">
                     <h2 style="letter-spacing:5px; font-size: 20px;">
               <a href="#">
@@ -218,9 +259,9 @@
                 </div>
             </header>
 
-            <table>
+            <table class="table-rwd">
                 <thead>
-                    <tr>
+                    <tr class="tr-only-hide">
                         <th>商品</th>
                         <th>資訊</th>
                         <th>單價</th>
@@ -229,42 +270,42 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td width="110" height="110">
-                            <img src="production_computer/pic/ASUS_X554SJ.jpg" id="good_1" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                        <td data-th="商品" width="110" height="110">
+                            <img src="production_computer/pic/ASUS_X554SJ.jpg" id="good_1" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
                         </td>
-                        <td>ASUS_X554SJ</td>
-                        <td>17,000</td>
-                        <td>10</td>
-                        <td><input type="submit" class="go" value="加入購物車" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="110" height="110">
-                            <img src="production_computer/pic/ACER_ES1-632G-C6A0.jpg" id="good_2" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
-                        </td>
-                        <td>ACER_ES1-632G-C6A0</td>
-                        <td>18,000</td>
-                        <td>5</td>
-                        <td><input type="submit" class="go" value="加入購物車" />
+                        <td data-th="資訊">ASUS_X554SJ</td>
+                        <td data-th="單價">17,000</td>
+                        <td data-th="數量">10</td>
+                        <td data-th="操作"><input type="submit" class="go form-control input-lg btn" value="加入購物車" />
                         </td>
                     </tr>
                     <tr>
-                        <td width="110" height="110">
-                            <img src="production_computer/pic/ASUS_K556UQ.jpg" id="good_3" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                        <td data-th="商品" width="110" height="110">
+                            <img src="production_computer/pic/ACER_ES1-632G-C6A0.jpg" id="good_2" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
                         </td>
-                        <td>ASUS_K556UQ</td>
-                        <td>19,000</td>
-                        <td>7</td>
-                        <td><input type="submit" class="go" value="加入購物車" />
+                        <td data-th="資訊">ACER_ES1-632G-C6A0</td>
+                        <td data-th="單價">18,000</td>
+                        <td data-th="數量">5</td>
+                        <td data-th="操作"><input type="submit" class="go form-control input-lg btn" value="加入購物車" />
+                        </td>
                     </tr>
                     <tr>
-                        <td width="110" height="110">
-                            <img src="production_computer/pic/ASUS_ZenPad_3s.jpg" id="good_4" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                        <td data-th="商品" width="110" height="110">
+                            <img src="production_computer/pic/ASUS_K556UQ.jpg" id="good_3" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
                         </td>
-                        <td>ASUS_ZenPad_3s</td>
-                        <td>20,000</td>
-                        <td>9</td>
-                        <td><input type="submit" class="go" value="加入購物車" /></td>
+                        <td data-th="資訊">ASUS_K556UQ</td>
+                        <td data-th="單價">19,000</td>
+                        <td data-th="數量">7</td>
+                        <td data-th="操作"><input type="submit" class="go form-control input-lg btn" value="加入購物車" />
+                    </tr>
+                    <tr>
+                        <td data-th="商品" width="110" height="110">
+                            <img src="production_computer/pic/ASUS_ZenPad_3s.jpg" id="good_4" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                        </td>
+                        <td data-th="資訊">ASUS_ZenPad_3s</td>
+                        <td data-th="單價">20,000</td>
+                        <td data-th="數量">9</td>
+                        <td data-th="操作"><input type="submit" class="go form-control input-lg btn" value="加入購物車" /></td>
                     </tr>
                 </tbody>
 
