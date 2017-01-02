@@ -3,6 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title>購物車</title>
     <script src="js/jquery.min.js"></script>
     <script src="js/skel.min.js"></script>
@@ -22,10 +26,6 @@
             });
             $("#good2").hoverpulse({
                 size: 50, // 圖片縮放的大小
-                speed: 100 // 圖片變換大小的速度
-            });
-            $("#good3").hoverpulse({
-                size: 100, // 圖片縮放的大小
                 speed: 100 // 圖片變換大小的速度
             });
             $("#good4").hoverpulse({
@@ -122,7 +122,7 @@
 		</noscript>
     <style>
         .cart-wrap {
-            font-size: 20px;
+            font-size: 15px;
         }
 
         .wrapper_1 {
@@ -211,6 +211,46 @@
             background: #360;
             display: none
         }
+
+        @media (max-width: 736px) {
+            .table-rwd {
+                min-width: 100%;
+            }
+            /*針對tr去做隱藏*/
+            tr.tr-only-hide {
+                display: none !important;
+            }
+            /*讓tr變成區塊主要讓他有個區塊*/
+            .table-rwd tr {
+                display: block;
+                border: 1px solid #ddd;
+                margin-top: 5px;
+            }
+            .table-rwd td {
+                text-align: left;
+                font-size: 16px;
+                overflow: hidden;
+                width: 100%;
+                display: block;
+                vertical-align: middle;
+            }
+            .table-rwd td:before {
+                /*最重要的就是這串*/
+                content: attr(data-th) " : ";
+                /*最重要的就是這串*/
+                display: inline-block;
+                text-transform: uppercase;
+                font-weight: bold;
+                margin-right: 10px;
+                color: #6a6a6a;
+            }
+            /*當RWD縮小的時候.table-bordered 會有兩條線，所以針對.table-bordered去做修正*/
+            .table-rwd.table-bordered td,
+            .table-rwd.table-bordered th,
+            .table-rwd.table-bordered {
+                border: 0;
+            }
+        }
     </style>
 </head>
 
@@ -229,7 +269,7 @@
     </header>
 
     <!-- Main -->
-    <section id="main" class="wrapper_1">
+    <section id="main" class="wrapper">
         <div class="container">
             <header class="major">
                 <h3 class="cart_head">購物車</h3>
@@ -238,9 +278,9 @@
                 </p>
             </header>
             <div class="cart-wrap">
-                <table id="cartTable" class="cart table table-condensed">
+                <table id="cartTable" class="table-rwd">
                     <thead>
-                        <tr>
+                        <tr class="tr-only-hide">
                             <th><label style="margin:1em 0 0.4em 0;font-size: 18px;">商品</label></th>
                             <th><label style="margin:1em 0 0.4em 0;font-size: 18px;">商品資訊</label></th>
                             <th><label style="margin:1em 0 0.4em 0;font-size: 18px;">單價</label></th>
@@ -251,74 +291,72 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="goods" width="110" height="110">
-                                <img src="searchlist_computer/pic/ASUS_K556UQ.jpg" id="goods" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                            <td data-th="商品" class="goods" width="110" height="110">
+                                <img class="img-responsive center-block" src="searchlist_computer/pic/ASUS_K556UQ.jpg" id="goods" style="position: absolute; top: 0px; left: 0px; height:105px; width:105px;">
                             </td>
-                            <td><span><a class="page-scroll" href="searchlist_computer/index.html#notebook">華碩 BU400VC</a></span></td>
-                            <td class="price" style="padding-top: 1.1rem;">8800</td>
-                            <td style="width:135px;">
+                            <td data-th="商品資訊"><span><a style="color:blue;"  href="searchlist_computer/index.html#notebook">華碩 BU400VC</a></span></td>
+                            <td data-th="單價" class="price" style="padding-top: 1.1rem;">8800</td>
+                            <td data-th="數量" style="width:135px;">
                                 <div class="input-group">
                                     <button class="input minus" style="float:left;">-</button>
                                     <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
                                     <button class="input plus ">+</button>
                                 </div>
                             </td>
-                            <td class="total" style="width:150px">8800</td>
-                            <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
+                            <td data-th="總計" class="total" style="width:150px">8800</td>
+                            <td data-th="刪除" class="action " style="padding-top: 1.1rem; " valign="bottom ">
                                 <button class="delete "></button>
                             </td>
                         </tr>
                         <tr>
-                            <td class="goods" width="110" height="110">
-                                <img src="searchlist_computer/pic/notebook_item1.gif" id="good2" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 105px; width: 105px;">
+                            <td data-th="商品" class="goods" width="110" height="110">
+                                <img class="img-responsive" src="searchlist_computer/pic/notebook_item1.gif" id="good2" style="position: absolute; top: 0px; left: 0px; height: 105px; width: 105px;">
                             </td>
-                            <td><span><a class="page-scroll" href="searchlist_computer/index.html#notebook_item">多功能筆電支架</a></span></td>
-                            <td class="price" style="padding-top: 1.1rem;">439</td>
-                            <td style="width:135px;">
+                            <td data-th="商品資訊"><span><a style="color:blue;" href="searchlist_computer/index.html#notebook_item">多功能筆電支架</a></span></td>
+                            <td data-th="單價" class="price" style="padding-top: 1.1rem;">439</td>
+                            <td data-th="數量" style="width:135px;">
                                 <div class="input-group">
                                     <button class="input minus" style="float:left;">-</button>
                                     <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
                                     <button class="input plus ">+</button>
                                 </div>
                             </td>
-                            <td class="total" style="width:150px">439</td>
-                            <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
+                            <td data-th="總計" class="total" style="width:150px">439</td>
+                            <td data-th="刪除" class="action " style="padding-top: 1.1rem; " valign="bottom ">
                                 <button class="delete"></button>
                             </td>
                         </tr>
                         <tr>
-                            <td class="goods" width="110" height="110">
-                                <img src="searchlist_computer/pic/ASUS_UX360CA.jpg" id="good4" width="110" height="110" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
+                            <td data-th="商品" class="goods" width="110" height="110">
+                                <img class="img-responsive" src="searchlist_computer/pic/ASUS_UX360CA.jpg" id="good4" style="position: absolute; top: 0px; left: 0px; height: 110px; width: 110px;">
                             </td>
-                            <td><span><a class="page-scroll" href="searchlist_computer/index.html#notebook">ASUS N53S</a></span></td>
-                            <td class="price" style="padding-top: 1.1rem;">22999</td>
-                            <td style="width:135px;">
+                            <td data-th="商品資訊"><span><a style="color:blue;" href="searchlist_computer/index.html#notebook">ASUS N53S</a></span></td>
+                            <td data-th="單價" class="price" style="padding-top: 1.1rem;">22999</td>
+                            <td data-th="數量" style="width:135px;">
                                 <div class="input-group">
                                     <button class="input minus" style="float:left;">-</button>
                                     <input type="text" class="input_sum" style="width:50px; float:left;height:30px;background-color: white;border: 1px solid #ccc;" value="1" />
                                     <button class="input plus ">+</button>
                                 </div>
                             </td>
-                            <td class="total" style="width:150px">22999</td>
-                            <td class="action " style="padding-top: 1.1rem; " valign="bottom ">
+                            <td data-th="總計" class="total" style="width:150px">22999</td>
+                            <td data-th="刪除" class="action " style="padding-top: 1.1rem;" valign="bottom ">
                                 <button class="delete"></button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div style="margin-left: 65rem; margin-top: 0.4rem; ">
 
-                    <label>總金額:<span class="priceTotal"></span></label>
-                </div>
-                <!-- <form action="confirmation.html ">
-                    <div style="margin-left: 10rem; margin-top: 0.4rem; ">
-                        <input type="submit" class="css_btn_class" value="繼續購物" />
+                <!-- <div style="margin-left: 58rem; margin-top: 0.4rem; white-space: nowrap; "> -->
+                <div class="row">
+                    <div class="pull-right">
+                        <div style="margin-left:10rem;">
+                            <label style="font-size:14px;">總金額:<span class="priceTotal"></span></label>
+                        </div>
+                        <input type="submit" class="form-control input-lg" value="繼續購物" onclick="javascript:location.href='searchlist_computer/index.html'" />
+                        <input type="submit" id="submit" class="form-control input-lg" value="下一步，填寫訂單" onclick="javascript:location.href='confirmation.html'" />
+                        <div id="msg">已成功刪除商品！</div>
                     </div>
-                </form> -->
-                <div style="margin-left: 58rem; margin-top: 0.4rem; white-space: nowrap; ">
-                    <input type="submit" class="css_btn_class" value="繼續購物" onclick="javascript:location.href='searchlist_computer/index.html'" />
-                    <input type="submit" id="submit" class="css_btn_class" value="下一步，填寫訂單" onclick="javascript:location.href='confirmation.html'" />
-                    <div id="msg">已成功刪除商品！</div>
                 </div>
             </div>
         </div>
@@ -399,3 +437,4 @@
 </body>
 
 </html>
+tml> tml>
