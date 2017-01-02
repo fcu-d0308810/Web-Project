@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
     <title>訂單資訊確認</title>
     <script src="js/jquery.min.js"></script>
     <script src="js/skel.min.js"></script>
@@ -14,6 +16,8 @@
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-xlarge.css" />
+      <link href="searchlist_computer/css/bootstrap.min.css" rel="stylesheet">
+
 		</noscript>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -126,16 +130,15 @@
             box-shadow: inset 1px 1px 3px;
             font-family: 微軟正黑體;
         }
-
-        .row-align {
+        /*.row-align {
             display: inline-block;
             vertical-align: middle;
             white-space: nowrap;
-        }
+        }*/
 
         .speak-align {
             height: 120px;
-            width: 425px;
+            width: 100%;
             box-shadow: inset 1px 1px 3px;
         }
 
@@ -175,6 +178,46 @@
             opacity: 1;
             box-shadow: inset 0px 0px 0px;
         }
+
+        @media (max-width: 736px) {
+            .table-rwd {
+                min-width: 100%;
+            }
+            /*針對tr去做隱藏*/
+            tr.tr-only-hide {
+                display: none !important;
+            }
+            /*讓tr變成區塊主要讓他有個區塊*/
+            .table-rwd tr {
+                display: block;
+                border: 1px solid #ddd;
+                margin-top: 5px;
+            }
+            .table-rwd td {
+                font-size: 16px;
+                overflow: hidden;
+                width: 100%;
+                display: block;
+                vertical-align: middle;
+            }
+            .table-rwd .first-td {
+                text-align: left
+            }
+            .table-rwd td:before {
+                /*最重要的就是這串*/
+                display: inline-block;
+                text-transform: uppercase;
+                font-weight: bold;
+                margin-right: 10px;
+                color: #6a6a6a;
+            }
+            /*當RWD縮小的時候.table-bordered 會有兩條線，所以針對.table-bordered去做修正*/
+            .table-rwd.table-bordered td,
+            .table-rwd.table-bordered th,
+            .table-rwd.table-bordered {
+                border: 0;
+            }
+        }
     </style>
 </head>
 
@@ -198,101 +241,99 @@
             <header class="major">
                 <h3 class="cart_head">購物訂單填寫</h3>
                 <p align="left">
-                    <img src="cart_img/step4.gif" width="500" height="60">
+                    <img src="cart_img/step4.gif" width="500" height="60" style="max-width:100%;">
                 </p>
             </header>
-            <div class="cart-wrap">
-                <form id="message_form" name="reg" method="POST" action="http://localhost:80/templated-transit/select_submit.php">
-                    <table id="cartTable" class="cart table table-condensed">
-                        <thead>
-                            <tr>
-                                <th><label style="margin:1em 0 0.4em 0;font-size: 18px;">購買訂單填寫</label></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="first-td">取貨人姓名：</td>
-                                <td>
-                                    <div class="row-align">
-                                        <input classx="inputform" name="username" id="username" placeholder="輸入姓名" style="height:28px; " type="text" size="10" maxlength="30" />
-                                    </div>
-                                    <span class="error1"></span>
+            <form id="message_form" name="reg" method="POST" action="http://localhost:80/templated-transit/select_submit.php">
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="first-td">手機：</td>
-                                <td>
-                                    <div class="row-align">
-                                        <input class="inputform" name="cellphone" id="cellphone" placeholder="輸入手機號碼" style="height:28px; " type="text" size="15" maxlength="30" />
-                                    </div>
-                                    <span class="error3"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="first-td">市話：</td>
-                                <td>
-                                    <div class="row-align">
-                                        <input class="inputform" name="phone" id="phone" placeholder="輸入市話號碼" style="height:28px;" type="text" size="15" maxlength="30" />
-                                    </div>
-                                    <span class="error4"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="first-td">Email：</td>
-                                <td>
-                                    <div class="row-align">
-                                        <input class="inputform" name="email" id="email" placeholder="輸入信箱" style="height:28px;" type="email" size="30" maxlength="30" />
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="first-td">通訊地址：</td>
-                                <td>
-                                    <div class="row-align">
-                                        <input class="inputform" name="address" id="address" placeholder="輸入地址" style="height:28px;" type="text" size="45" maxlength="50" />
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="first-td" height="100px">付款方式：</td>
-                                <td style="width:170px;">
-                                    <div class="input-group">
-                                        <label><input name="pay" type="radio" style="height:20px; width:20px; float:left;" value="ATM" />ATM</label>
-                                        <label><input name="pay" type="radio" style="width:20px; height:20px;" value="貨到付款" />貨到付款</label>
-                                    </div>
+                <table class="table-rwd table">
+                    <thead>
+                        <tr class="tr-only-hide">
+                            <th><label style="margin:1em 0 0.4em 0;font-size: 18px;">購買訂單填寫</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="first-td">取貨人姓名：</td>
+                            <td>
+                                <div class="row-align">
+                                    <input classx="inputform" name="username" id="username" placeholder="輸入姓名" style="height:28px; " type="text" size="10" maxlength="30" />
+                                </div>
+                                <span class="error1"></span>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="first-td" height="100px">運送方式：</td>
-                                <td style="width:170px;">
-                                    <div class="input-group">
-                                        <label><input name="transport" type="radio" style="width:20px; height:20px;" value="711店到店" />711店到店</label>
-                                        <label><input name="transport" type="radio" style="width:20px; height:20px;" value="宅配到家" />宅配到家</label>
-
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="first-td" height="150px">給賣家的話：</td>
-                                <td>
-                                    <div id="resizable" class="speak-align">
-                                        <textarea class="speak" name="speak" id="speak" style="height:120px;" type="text" cols="53" rows="5"></textarea>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div style="margin-left: 64rem; margin-top: 0.4rem; ">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-td">手機：</td>
+                            <td>
+                                <div class="row-align">
+                                    <input class="inputform" name="cellphone" id="cellphone" placeholder="輸入手機號碼" style="height:28px; " type="text" size="15" maxlength="30" />
+                                </div>
+                                <span class="error3"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-td">市話：</td>
+                            <td>
+                                <div class="row-align">
+                                    <input class="inputform" name="phone" id="phone" placeholder="輸入市話號碼" style="height:28px;" type="text" size="15" maxlength="30" />
+                                </div>
+                                <span class="error4"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-td">Email：</td>
+                            <td>
+                                <div class="row-align">
+                                    <input class="inputform" name="email" id="email" placeholder="輸入信箱" style="height:28px;" type="email" size="30" maxlength="30" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-td">通訊地址：</td>
+                            <td>
+                                <div class="row-align">
+                                    <input class="inputform" name="address" id="address" placeholder="輸入地址" style="height:28px;" type="text" size="30" maxlength="50" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-td" height="100px">付款方式：</td>
+                            <td style="width:170px;">
+                                <div class="input-group">
+                                    <label><input name="pay" type="radio" style="height:20px; width:20px; " value="ATM" />ATM</label>
+                                    <label><input name="pay" type="radio" style="width:20px; height:20px;" value="貨到付款" />貨到付款</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-td" height="100px">運送方式：</td>
+                            <td style="width:170px;">
+                                <div class="input-group">
+                                    <label><input name="transport" type="radio" style="width:20px; height:20px;" value="711店到店" />711店到店</label>
+                                    <label><input name="transport" type="radio" style="width:20px; height:20px;" value="宅配到家" />宅配到家</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-td" height="150px">給賣家的話：</td>
+                            <td>
+                                <div id="resizable" class="speak-align">
+                                    <textarea class="speak" name="speak" id="speak" style="height:120px;" type="text" cols="53" rows="5"></textarea>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="pull-right">
                         <input id="submit" type="submit" class="css_btn_class" value="下一步，送出訂單" />
                     </div>
-                </form>
+                </div>
+            </form>
 
 
-            </div>
         </div>
-
     </section>
 
     <!-- Footer -->
@@ -364,6 +405,11 @@
             </div>
         </div>
     </footer>
+
+</body>
+
+</html>
+</footer>
 
 </body>
 

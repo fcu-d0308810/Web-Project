@@ -108,7 +108,7 @@
           <header class="major">
               <h3 class="cart_head">訂單最後確認  </h3>
               <p align="left">
-                  <img src="cart_img/step4.gif" width="500" height="60">
+                  <img src="cart_img/step4.gif" width="500" height="60" style="max-width:100%;">
               </p>
           </header>
       </div>
@@ -152,14 +152,17 @@
                             </tr>
                             <tr>
                                 <td class="first-td">總金額：</td>
-                                <td><div class="row-align"><?php echo $_POST['address']?></div></td>
+                                <td><div class="row-align">$66800</div></td>
                             </tr>
 
                         </tbody>
                     </table>
-                    <div style="margin-left: 22rem; margin-top: 0.4rem; ">
-                        <input id="submit" type="submit" class="css_btn_class" value="完成訂單" />
+                    <div class="row">
+                        <div class="pull-right">
+                          <input id="submit" type="submit" class="css_btn_class" value="完成訂單" />
+                        </div>
                     </div>
+
                 </form>
             </div>
         </div>
